@@ -2,6 +2,7 @@ package com.satya.springSecurity.service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,11 +18,11 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	UserRepository userRepository;
-
+	private static final AtomicInteger count = new AtomicInteger(0);  
 	@Override
 	public User save(User user) {
 		String password = PasswordUtil.getPasswordHash(user.getPassword());
-		long id = (long) Math.random();
+		long id = count.incrementAndGet();
 		user.setPassword(password);
 		user.setCreatedDate(new Date());
 		user.setId(id);

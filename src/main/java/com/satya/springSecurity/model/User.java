@@ -14,7 +14,7 @@ public class User implements Serializable{
 	 */
 	private static final long serialVersionUID = 8271084906627851688L;
 	@Id
-	private String id;	
+	private Long id;	
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -23,10 +23,10 @@ public class User implements Serializable{
 	private String role;
 	private String phoneNumber;
 	private Date createdDate;
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getFirstName() {

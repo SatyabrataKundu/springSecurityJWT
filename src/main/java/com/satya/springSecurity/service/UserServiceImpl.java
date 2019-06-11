@@ -21,9 +21,10 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User save(User user) {
 		String password = PasswordUtil.getPasswordHash(user.getPassword());
-
+		long id = (long) Math.random();
 		user.setPassword(password);
 		user.setCreatedDate(new Date());
+		user.setId(id);
 
 		return userRepository.save(user);
 	}

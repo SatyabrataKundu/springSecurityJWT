@@ -46,7 +46,7 @@ public class JwtTokenUtil implements Serializable{
 	private Claims getClaimsFromToken(String authToken) {
 		Claims claims = null;
 		try {
-			claims = Jwts.parser().setSigningKey(secret).parseClaimsJwt(authToken).getBody();
+			claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(authToken).getBody();
 		} catch (Exception e) {
 			claims = null;
 		}
